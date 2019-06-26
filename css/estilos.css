@@ -1,0 +1,345 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /**1rem*=10px*/
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}/*si agregas padding no afecta paul irish box lo anterior se agrega de la pagina https://www.paulirish.com/2012/box-sizing-border-box-ftw/*/
+body{
+	font-family: 'Open Sans', sans-serif;/* esta se agrego desde google font https://fonts.google.com/?query=open&selection.family=Open+Sans|PT+Sans:400,700*/
+	font-size: 1.6rem;
+	line-height: 2;
+}
+/*Globales*/
+ .contenedor{
+ 	max-width: 1200px;
+ 	width: 95%;/**esto deja un pequeño margen en la pantalla  veneficia la lectura **/
+ 	margin: 0 auto;
+  }
+
+  h1,h2,h3,h4{
+  	font-family: 'PT Sans' sans-serif;/* esta se agrego desde google font*/
+  	
+  }
+  h1{
+  	font-size: 4.8rem;
+  }
+  h2{
+	font-size: 4rem;
+	line-height: 1.2;
+  }
+  h3{
+	font-size: 3.2rem;
+  }
+  h4{
+	font-size: 2.8rem;
+  }
+  img{
+  	max-width: 100%;
+  }
+
+  /**Utilidades**/
+  .centrar-texto{
+  	text-align: center;
+  }
+  .no-margin{
+  	margin:0;
+
+  }
+  /*grid*/
+
+  @media(min-width: 768px )
+  {
+  	/*para que se posicione texto frente a imagen*/
+  	  .grid
+  	  {
+  		display: flex;
+  		justify-content: space-between;
+  		flex-wrap: wrap;/*esto para que loe 
+  		selementos que apareian a la derecha de la
+  		 imagen ahora aparezcan abajo*/
+  	   }
+
+  	   .centrar-columnas{
+  	   	justify-content: center;
+  	   }
+
+  	   .columnas-4{
+  	   	flex:0 0 calc(33.3%);
+  	   }
+  	   .columnas-6{
+  	   	flex: 0 0 calc(50% - 1rem);
+  	   }
+  	  .columnas-8{
+  	  	flex: 0 0 calc(66.6% - 1rem);
+  	  }
+  	  .columnas-10{
+  	  	flex: 0 0 calc(83.3% - 1rem);
+
+  	  }
+  	  .columnas-12 {
+  	  	flex: 0 0 100%;
+  	  }
+
+  }
+  /*botones*/
+
+  .btn{ 
+  	display:block;/*para que ocupe el espacio disponible*/
+  	text-align: center;
+  	padding: 1rem 3rem;
+  	margin: 2rem 0;
+  	color: #ffffff;
+  	text-decoration:none;
+  	font-family: 'PT Sans',sans-serif;
+  	font-weight: 700;
+  	text-transform: uppercase;
+  	font-size: 2rem;
+	flex: 0 0 100%;/*con esta propiedad estamos forzando a crecer
+   al boton aun que el padre no lo permitia pero mas adelante en el mq pondremos un flex:0 0 auto; para que se haga pequeño cuando la pagina este grande y grande cuando se haga pequeña. el ancho sera  definido de forma automatica*/
+  }
+  .btn:hover{
+  	cursor: pointer;
+  }
+
+  @media(min-width: 768px ){
+  		.btn{
+  			display: inline-block; /*Display Bloc y de esa forma el ancho
+   va a ser definido por medio del pdding ya no va a ocupar todo el espacio*/
+       flex: 0 0 auto;
+  		}
+
+  }
+  .btn-primario{
+  	background-color: black;
+
+  }
+  .btn-secundario{
+  	background-color: #784dc3;
+
+  }
+
+  /*Header*/
+@media(min-width: 768px) /**aqui se especifica el tamaño con
+esta se adapta el tamaño y el orden del contenido cuando la ventana es pequeña o grande sin que se vea deforme o feo*/
+{
+	.barra{/**selector sera la barra**/
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	
+}
+  .site-header{
+
+  	background-image: url(../img/banner.jpg);
+  	background-repeat: no-repeat;/*pore default odas las imagenes se repiten asi que se utiliza esta propiedad para que no se repita*/
+  	background-position: center center;/*para centrar*/
+  	background-size: cover;/*va a hacer que se llene tanto de altura como ancho el espacio con la imagen*/
+  	height: 60rem;/*con esto se fija la altura 600 pixeles es igual a 60 rem*/
+
+}
+.site-header a{/* aqui se esta dando estilo a los enlaces*/
+	color:#ffffff;
+	text-decoration: none;/*con esto se quita el subrayado del enlace*/
+}
+.site-header h1{
+	text-align: center;
+	font-weight: 400;
+}
+.site-header h1 span{
+	font-weight: 700;
+
+}
+
+/*Navegacion*/
+.navegacion a{/* selecciona todos los enlaces*/
+	text-align: center;
+	display: block;/*para que cada elemento tenga su propia linea*/
+	font-size: 1.8rem;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+@media(min-width: 768px)/*esto para la navegacion en una tablet*/
+{
+	.navegacion a
+	{
+		display:inline;/*cambia la propiedad "display:block;" por "display:aline;"**//*coloca cada elemento uno frente al ptro**/
+		margin-right: 2rem;/*se utiliza para dar un poco de separaxion en caso 
+		de que queden muy juntos*/
+	}
+	.navegacion a:last-of-type
+	{
+		margin: 0;/*se elimina la pequeña franja que se agrego*/
+	}
+}
+
+
+/**header texto**/
+.texto-header{
+	color: #ffffff;
+	text-align: center;
+	margin-top: 5rem;
+}
+
+@media(min-width:768px){
+ .texto-header{
+
+		margin-top: 15rem; 
+ 	}
+
+}
+.texto-header p{
+	font-size: 2.2rem;
+}
+
+/** Contenido Principal Home **/
+.contenido-principal{
+	display: flex;
+	flex-wrap: wrap;
+
+}
+
+.blog,
+.cursos{
+
+	flex-basis:0 0 100%;
+
+}
+.cursos{
+	order: -1;/* de esta forma cambias el orden de un bloque que corresponda a la clase**/
+
+}
+
+@media (min-width: 768px){
+ .contenido-principal{
+	justify-content:space-between;  
+
+ }
+
+.blog{
+	flex-basis:66.6%;
+     order: -1; /**para mover hacia la izqyuierdael texto con clase blog**/
+
+}
+
+.cursos{
+	flex-basis: calc(33.3% - 4rem);
+
+
+	}
+}
+/**opcional**/
+/**
+
+.entrada-blog{
+	display:flex;
+	justify-content: space-between;
+}
+.entrada-blog .imagen{
+	flex:0 0 40%;
+}
+.entrada-blog .contenido-blog{
+	flex:0 0 calc(60% - 2rem);
+
+}**/
+
+.entrada-blog{
+	margin-bottom: 2rem;
+	border-bottom: 1px solid #e1e1e1;/* este va a servir como separacion entre cada fotoy articulo*/
+
+}
+.entrada-blog:last-of-type{
+	border:none;/*este es para que no parezca la division al final ya que no hay nada que separar*/
+
+}
+/**cuerpo**/
+
+.cursos-lista{/*con esto se elimina la viñeta y pequeña franja**/
+
+	padding: 0;
+	list-style: none;
+}
+.curso {/*para separar cada curso y gregar un paddig*/
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+	border-bottom: 1px solid #e1e1e1;
+/*con este bloque se crea una linea divisora entre cada curso*/
+}
+.curso:last-of-type{
+	border-bottom: none;/*se quita el ultimo borde del las barritas que dividen
+	las secciones de los cursos, es decir la ultima linea divisora se va */
+}
+.curso p{
+	font-family: 'PT Sans' sans-serif;
+	font-weight: 700;
+	font-size: 2rem;
+}
+.curso p.descripcion {/*ngritas*/
+	font-weight: 400;
+}
+
+	/*es mas pesado un contenedor que tiene una etiqueta que uno que tiene una clase
+
+
+/*foother*/
+.site-foother{
+	background-color:black;
+	padding: 3rem;
+	margin-top: 4rem;
+
+} add -A
+.site-foother p{
+	color:#ffffff;
+	font-size: 4rem;
+	font-weight: 400;
+	font-family: 'PT Sans', sans-serif;
+	text-align: center;
+}
+.site-foother p span{
+	font-weight: 700;
+
+}
+
+/*Contacto estilos*/
+.formulario-contacto{
+
+		background-color: #ffffff;
+		padding: 5rem;
+	}
+@media(min-width: 768px){
+	.formulario-contacto{
+
+		margin-top: -10rem;
+	}
+
+}
+.formulario-contacto .campo{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 2rem;
+}
+.formulario-contacto .campo label{
+	flex: 0 0 8rem;
+}
+.formulario-contacto .campo input:not([type="submit"]),/*aqui no se aplica
+ caracteristica  a boton enviar input submit*/
+.formulario-contacto textarea {
+
+ 	flex: 1;
+ 	border: 1px solid #e1e1e1;
+ 	padding: 1rem;
+}
+.formulario-contacto textarea {
+	/*se hace este otro selector para que la caracteriztica de medida no interfiera con los demas label e input*/
+
+	height: 20rem;
+}
+.formulario-contacto .enviar{
+	display: flex;
+	justify-content: flex-end;
+}
+
+/*hola esto solo es un comentario*/git status
